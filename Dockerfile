@@ -9,7 +9,7 @@ RUN apk add --no-cache python3 && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache
 
-## - NUMPY, SCIPY, PANDAS and SCIKIT
+## - NUMPY, SCIPY, PANDAS, SCIKIT and PYBUILDER
 
 RUN apk add --no-cache \
         --virtual=.build-dependencies \
@@ -19,6 +19,7 @@ RUN apk add --no-cache \
     \
     ln -s locale.h /usr/include/xlocale.h && \
     \
+    pip install pybuilder && \
     pip install numpy && \
     pip install pandas && \
     pip install scipy && \
