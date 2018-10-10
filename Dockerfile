@@ -11,6 +11,8 @@ RUN apk add --no-cache python3 && \
 
 ## - NUMPY, SCIPY, PANDAS, SCIKIT and PYBUILDER
 
+RUN apk add --no-cache pkgconfig openssl-dev libffi-dev musl-dev make gcc
+
 RUN apk add --no-cache \
         --virtual=.build-dependencies \
         g++ gfortran file binutils \
