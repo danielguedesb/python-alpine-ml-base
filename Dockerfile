@@ -13,8 +13,8 @@ RUN apk add --no-cache python3 python3-dev && \
 RUN apk add -U --no-cache \
         gcc build-base cmake pkgconfig libressl-dev libffi-dev linux-headers \
         ca-certificates m4 libexecinfo-dev libpng libpng-dev libc-dev libressl-dev \
-        freetype freetype-dev libxml2-dev libxslt-dev zlib-dev lapack lapack-dev \
-        musl-dev
+        freetype freetype-dev libxml2-dev libxslt-dev zlib-dev \
+        musl-dev openblas openblas-dev
 
 ## - NUMPY, SCIPY, PANDAS, SCIKIT and PYBUILDER
 
