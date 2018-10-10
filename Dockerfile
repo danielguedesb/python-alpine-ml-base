@@ -16,7 +16,7 @@ RUN apk add -U --no-cache \
         freetype freetype-dev libxml2-dev libxslt-dev zlib-dev \
         musl-dev openblas openblas-dev
 
-## - NUMPY, SCIPY, PANDAS, SCIKIT and PYBUILDER
+## - NUMPY, SCIPY, PANDAS, SCIKIT
 
 RUN apk add --no-cache \
         --virtual=.build-dependencies \
