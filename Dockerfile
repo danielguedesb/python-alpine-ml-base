@@ -11,17 +11,14 @@ RUN apk add --no-cache python3 && \
 
 ## - NUMPY, SCIPY, PANDAS, SCIKIT and PYBUILDER
 
-RUN apk add --no-cache pkgconfig openssl-dev libffi-dev musl-dev make gcc
-
 RUN apk add --no-cache \
         --virtual=.build-dependencies \
-        g++ gfortran file binutils \
+        g++ cmake gfortran file binutils pkgconfig openssl-dev libffi-dev linux-headers m4 libexecinfo-dev \
         musl-dev python3-dev openblas-dev && \
     apk add libstdc++ openblas && \
     \
     ln -s locale.h /usr/include/xlocale.h && \
     \
-    pip install pybuilder && \
     pip install numpy && \
     pip install pandas && \
     pip install scipy && \
