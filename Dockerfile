@@ -1,7 +1,7 @@
 ## - BASE
 FROM alpine:3.8
 
-RUN apk add --no-cache python3 && \
+RUN apk add --no-cache python3 python3-dev && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip setuptools && \
@@ -9,11 +9,18 @@ RUN apk add --no-cache python3 && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache
 
+## Alpine packages required by some python dependencies
+RUN apk add -U --no-cache \
+        gcc build-base cmake pkgconfig libressl-dev libffi-dev linux-headers \
+        ca-certificates m4 libexecinfo-dev libpng libpng-dev libc-dev libressl-dev \
+        freetype freetype-dev libxml2-dev libxslt-dev zlib-dev lapack lapack-dev \
+        musl-dev
+
 ## - NUMPY, SCIPY, PANDAS, SCIKIT and PYBUILDER
 
 RUN apk add --no-cache \
         --virtual=.build-dependencies \
-        g++ cmake gfortran file binutils pkgconfig openssl-dev libffi-dev linux-headers m4 libexecinfo-dev \
+        g++ gfortran file binutils \
         musl-dev python3-dev openblas-dev && \
     apk add libstdc++ openblas && \
     \
@@ -36,7 +43,7 @@ RUN apk add --no-cache \
 RUN cd /tmp && \
     apk add --no-cache \
         --virtual=.build-dependencies \
-        gcc make file binutils \
+        make file binutils \
         musl-dev python3-dev gmp-dev suitesparse-dev openblas-dev && \
     apk add gmp suitesparse && \
     \
