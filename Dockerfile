@@ -11,10 +11,8 @@ RUN apk add --no-cache python3 python3-dev && \
 
 ## Alpine packages required by some python dependencies
 RUN apk add -U --no-cache \
-        gcc build-base cmake pkgconfig libressl-dev libffi-dev linux-headers \
-        ca-certificates m4 libexecinfo-dev libpng libpng-dev libc-dev libressl-dev \
-        freetype freetype-dev libxml2-dev libxslt-dev zlib-dev \
-        musl-dev openblas openblas-dev
+        gcc build-base cmake pkgconfig libressl-dev libffi-dev libxml2-dev \
+        libxslt-dev linux-headers libc-dev freetype-dev libpng-dev
 
 ## - NUMPY, SCIPY, PANDAS, SCIKIT
 
@@ -26,6 +24,7 @@ RUN apk add --no-cache \
     \
     ln -s locale.h /usr/include/xlocale.h && \
     \
+    pip install matplotlib && \
     pip install numpy && \
     pip install pandas && \
     pip install scipy && \
