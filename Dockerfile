@@ -24,7 +24,7 @@ RUN apk add --no-cache \
     \
     ln -s locale.h /usr/include/xlocale.h && \
     \
-    pip install pybuilder && \
+    pip install --no-deps pybuilder && \
     pip install matplotlib && \
     pip install numpy && \
     pip install pandas && \
