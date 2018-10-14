@@ -14,7 +14,7 @@ RUN apk add -U --no-cache \
         gcc build-base cmake pkgconfig libressl-dev libffi-dev libxml2-dev \
         libxslt-dev linux-headers libc-dev freetype-dev libpng-dev
 
-## - NUMPY, SCIPY, PANDAS, SCIKIT
+## - NUMPY, SCIPY, PANDAS, SCIKIT, MATPLOTLIB and PYBUILDER
 
 RUN apk add --no-cache \
         --virtual=.build-dependencies \
@@ -24,6 +24,7 @@ RUN apk add --no-cache \
     \
     ln -s locale.h /usr/include/xlocale.h && \
     \
+    pip install pybuilder && \
     pip install matplotlib && \
     pip install numpy && \
     pip install pandas && \
